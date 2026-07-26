@@ -42,4 +42,4 @@ A zero-learning-curve Chinese ***stroke*** IME built in Rust.( ͡° ͜ʖ ͡°)
 # ⚠️Footnotes⚠️
 - the program and the words' data(only 1500 words so far) isnt done yet, but just like my other project, idk will i forget it tomorrow when i wake up, so dont have high expectations i will upgrade it...
 - if u want to updata words, the web i follow is (here)[https://humanum.arts.cuhk.edu.hk/Lexis/lexi-can/faq.php?s=1001]. i will tank you so much if u send me the updated version!!!
-- u can contant me by my discord link 
+- welcome to make any comments in my discord server, i need ur power to make this program better !!!
