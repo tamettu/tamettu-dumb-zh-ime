@@ -11,8 +11,10 @@ A zero-learning-curve Chinese ***stroke*** IME built in Rust.
   - `s` -> `亅` (tick to the left, only tick count)
   - `a` -> `㇟` (tick to the right, only tick count)
   - |e.g.| `我` <- `rwesytarq`
+  - |e.g.| `你` <- `rerwresqr`
+  - |e.g.| `教` <- `wewrwreswrwrt`
 * You cannot enter a digit directly next to another digit.  
-  - The program will either ignore it or return an error message. (I forgot which one—you can test it!👍)  
+  - The program will either ignore it or return an error message. (I forgot which one—you can test test!👍)  
 
 * You can mistype some strokes using the special `F` key, but you cannot exceed the allowed tolerance.  
   - e.g. `我` <- `resarF9` (I will show what the digit after F means below)  
