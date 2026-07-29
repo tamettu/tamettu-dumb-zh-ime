@@ -26,9 +26,10 @@ fn zip_input(text: &str) -> Option<BTreeMap<char, i8>> {
     let mut i = 0;
     while i < chars.len() {
         if chars[i] == 'F' {
+            new_text_map.insert('F', 2);
+            new_text_map.insert('G', 2);
             i += 1;
             if i >= text.len() {
-                new_text_map.insert('F', 2);
                 continue;
             }
             if let Some(c_digit) = chars[i].to_digit(10) {
@@ -37,9 +38,18 @@ fn zip_input(text: &str) -> Option<BTreeMap<char, i8>> {
                     i += 1;
                 }
             } else {
-                new_text_map.insert('F', 2);
+                continue;
             }
-            continue;
+            if i >= text.len() {
+                continue;
+            }
+            if let Some(c_digit) = chars[i].to_digit(10) {
+                if let Ok(c_i8) = c_digit.try_into() {
+                    new_text_map.insert('G', c_i8);
+                    i += 1;
+                    continue;
+                }
+            }
         }
         if chars[i].is_ascii_lowercase() {
             *new_text_map.entry(chars[i]).or_insert(0) += 1;
@@ -103,13 +113,16 @@ fn find_words(
     let Some(max_diff) = text.get(&'F').copied() else {
         panic!("\x1b[31mur pc 100% broken!!!\x1b[0m")
     };
+    let Some(max_diff_char) = text.get(&'G').copied() else {
+        panic!("\x1b[31mur pc 100% broken!!!\x1b[0m")
+    };
     text.remove(&'F');
+    text.remove(&'G');
     replenish_0_char(all_char, text);
     let mut text_len: i8 = 0;
     for (_, &v) in text.iter() {
         text_len += v;
     }
-    println!("{}", max_diff);
     for (i, (k, v)) in data.iter().enumerate() {
         if data_len[i].abs_diff(text_len) >= max_diff as u8 {
             continue;
@@ -117,7 +130,12 @@ fn find_words(
         let mut is_pass = true;
         for (k2, &v2) in k.iter() {
             match text.get(k2) {
-                Some(a) if a.abs_diff(v2) < 2 && !['e', 'r', 'a', 's'].contains(k2) => continue,
+                Some(a)
+                    if ['w', 'q', 't', 'y'].contains(k2)
+                        && a.abs_diff(v2) < max_diff_char as u8 =>
+                {
+                    continue;
+                }
 
                 Some(a) if *a == v2 => continue,
 
