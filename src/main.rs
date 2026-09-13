@@ -124,7 +124,7 @@ fn find_words(
         text_len += v;
     }
     for (i, (k, v)) in data.iter().enumerate() {
-        if data_len[i].abs_diff(text_len) >= max_diff as u8 {
+        if data_len[i].abs_diff(text_len) >= max_diff as u8 && data_len[i] + 1 < text_len {
             continue;
         }
         let mut is_pass = true;
